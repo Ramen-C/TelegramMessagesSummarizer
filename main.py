@@ -27,7 +27,7 @@ def main():
         os.system("tdl login")
 
     def handle_fetch_chats():
-        output = subprocess.check_output(['tdl', 'chat', 'ls', '--proxy', 'http://localhost:7890'], text=True)
+        output = subprocess.check_output([r'C:\tdl\tdl.exe', 'chat', 'ls', '--proxy', 'http://localhost:7890'], text=True, encoding='utf-8')
         chat_listbox.delete(0, tk.END)
         for line in output.splitlines()[1:]:  # 跳过表头
             chat_listbox.insert(tk.END, line)
@@ -46,13 +46,13 @@ def main():
 
         if export_type == "last":
             n = entry_last.get()
-            cmd = ['tdl', 'chat', 'export', '-c', cid, '-T', 'last', '-i', n,
+            cmd = [r'C:\tdl\tdl.exe', 'chat', 'export', '-c', cid, '-T', 'last', '-i', n,
                    '--proxy', 'http://localhost:7890', '--with-content', '--all']
         else:
             h = float(entry_hour.get())
             now = int(time.time())
             since = now - int(h * 3600)
-            cmd = ['tdl', 'chat', 'export', '-c', cid, '-T', 'time', '-i', f"{since},{now}",
+            cmd = [r'C:\tdl\tdl.exe', 'chat', 'export', '-c', cid, '-T', 'time', '-i', f"{since},{now}",
                    '--proxy', 'http://localhost:7890', '--with-content', '--all']
         subprocess.run(cmd)
 
@@ -83,7 +83,7 @@ def main():
             f.write(result)
         messagebox.showinfo("总结完成", "摘要已生成，将发送到群聊")
         subprocess.run([
-            'tdl', 'up', '-c', cid, '-p', 'summary.txt', '--proxy', 'http://localhost:7890'
+            r'C:\tdl\tdl.exe', 'up', '-c', cid, '-p', 'summary.txt', '--proxy', 'http://localhost:7890'
         ])
 
         set_setting("api_key", api_key.get())
