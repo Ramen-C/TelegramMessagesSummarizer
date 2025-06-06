@@ -11,9 +11,13 @@ def list_chats():
     # 读取配置
     config_path = Path('config.json')
     config = json.loads(config_path.read_text())
+    proxy = config.get("proxy")  # 可为空
 
-    # 调用 tdl 列出所有聊天，使用 JSON 输出
-    result = subprocess.run([config['tdl_path'], 'chat', 'ls', '-o', 'json','--proxy','http://localhost:7890'],
-                            capture_output=True, text=True)
+    cmd = [config['tdl_path'], 'chat', 'ls', '-o', 'json']
+    if proxy:
+        cmd.extend(['--proxy', proxy])
+
+    # 调用 tdl
+    result = subprocess.run(cmd, capture_output=True, text=True)
     data = json.loads(result.stdout)
     return data

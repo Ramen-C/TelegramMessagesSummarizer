@@ -13,13 +13,18 @@ def export_chat(chat_id, last_n=None, last_n_hours=None):
     # 读取配置
     config_path = Path('config.json')
     config = json.loads(config_path.read_text())
+    proxy = config.get("proxy")  # 可为空
 
     if last_n is not None:
-        cmd = [config['tdl_path'], 'chat', 'export', '-c', str(chat_id), '-T', 'last', '-i', str(last_n),'--proxy','http://localhost:7890','--all','--with-content']
+        cmd = [config['tdl_path'], 'chat', 'export', '-c', str(chat_id), '-T', 'last', '-i', str(last_n),'--all','--with-content']
+        if proxy:
+            cmd.extend(['--proxy', proxy])
     elif last_n_hours is not None:
         now = int(time.time())
         since = now - int(last_n_hours * 3600)
-        cmd = [config['tdl_path'], 'chat', 'export', '-c', str(chat_id), '-T', 'time', '-i', f"{since},{now}", '--proxy','http://localhost:7890','--all','--with-content']
+        cmd = [config['tdl_path'], 'chat', 'export', '-c', str(chat_id), '-T', 'time', '-i', f"{since},{now}",'--all','--with-content']
+        if proxy:
+            cmd.extend(['--proxy', proxy])
     else:
         raise ValueError("必须指定导出的消息数量或小时数。")
 

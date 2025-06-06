@@ -1,3 +1,4 @@
 {
-    "tdl_path": "tdl"
+  "tdl_path": "tdl",
+  "proxy": "http://localhost:7890"
 }
