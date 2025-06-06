@@ -6,7 +6,7 @@ def summarize_chat():
     使用 DeepSeek API 对导出的聊天记录进行分析，并返回 Markdown 格式的摘要字符串。
     """
     # 读取 JSON 文件
-    with open('tdl-export.json', 'r', encoding='utf-8') as f:
+    with open('tdl-export-filtered.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
 
     # 提取消息文本（兼容没有 text 的消息）

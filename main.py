@@ -1,8 +1,7 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 import chat_selector, exporter, summarizer, forwarder
-import json
-import subprocess
+from filter import filter_messages
 
 
 def main():
@@ -84,6 +83,7 @@ def main():
                 exporter.export_chat(chat_id, last_n=n)
             else:
                 exporter.export_chat(chat_id, last_n_hours=n)
+            filter_messages()
             summary_text = summarizer.summarize_chat()
             forwarder.forward_summary(chat_target_var.get().strip(), summary_text)
             messagebox.showinfo("成功", "摘要已发送到群聊")
