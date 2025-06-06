@@ -1,24 +1,27 @@
 # exporter.py
 import subprocess
 import time
+from pathlib import Path
+import json
 
-def export_chat(chat_id):
+def export_chat(chat_id, last_n=None, last_n_hours=None):
     """
-    根据用户输入导出指定群聊的消息记录。支持最新 N 条或最近 N 小时内的消息。
+    根据传入参数导出指定群聊的消息记录。支持最新 N 条或最近 N 小时内的消息。
     默认输出文件为 tdl-export.json。
     """
-    mode = input("请选择导出方式（输入 'last' 导出最新N条，输入 'time' 导出最近N小时）：").strip().lower()
-    if mode == 'last':
-        count = input("请输入要导出的消息条数 N：").strip()
-        cmd = ['tdl', 'chat', 'export', '-c', str(chat_id), '-T', 'last', '-i', count]
-    elif mode == 'time':
-        hours = float(input("请输入要导出的时间跨度（小时）："))
+
+    # 读取配置
+    config_path = Path('config.json')
+    config = json.loads(config_path.read_text())
+
+    if last_n is not None:
+        cmd = [config['tdl_path'], 'chat', 'export', '-c', str(chat_id), '-T', 'last', '-i', str(last_n),'--proxy','http://localhost:7890','--all','--with-content']
+    elif last_n_hours is not None:
         now = int(time.time())
-        since = now - int(hours * 3600)
-        # 使用时间戳范围导出
-        cmd = ['tdl', 'chat', 'export', '-c', str(chat_id), '-T', 'time', '-i', f"{since},{now}"]
+        since = now - int(last_n_hours * 3600)
+        cmd = [config['tdl_path'], 'chat', 'export', '-c', str(chat_id), '-T', 'time', '-i', f"{since},{now}", '--proxy','http://localhost:7890','--all','--with-content']
     else:
-        raise ValueError("无效的导出方式。请输入 'last' 或 'time'。")
-    print("执行命令：", " ".join(cmd))
+        raise ValueError("必须指定导出的消息数量或小时数。")
+
     subprocess.run(cmd)
     print("消息导出完成，文件：tdl-export.json")

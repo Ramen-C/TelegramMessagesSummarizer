@@ -1,136 +1,123 @@
-# main.py
-import os
 import tkinter as tk
-from tkinter import messagebox
-import subprocess
-import time
+from tkinter import ttk, messagebox
+import chat_selector, exporter, summarizer, forwarder
 import json
-import sqlite3
+import subprocess
+
 
 def main():
-    conn = sqlite3.connect('settings.db')
-    cur = conn.cursor()
-    cur.execute('CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT)')
-    conn.commit()
-
-    def get_setting(key):
-        cur.execute('SELECT value FROM settings WHERE key=?', (key,))
-        row = cur.fetchone()
-        return row[0] if row else ''
-
-    def set_setting(key, value):
-        cur.execute('REPLACE INTO settings (key, value) VALUES (?, ?)', (key, value))
-        conn.commit()
-
-    def handle_login():
-        messagebox.showinfo("登录提醒", "将打开命令行窗口，请按空格确认账号并输入 no。")
-        os.system("tdl login")
-
-    def handle_fetch_chats():
-        output = subprocess.check_output([r'C:\tdl\tdl.exe', 'chat', 'ls', '--proxy', 'http://localhost:7890'], text=True, encoding='utf-8')
-        chat_listbox.delete(0, tk.END)
-        for line in output.splitlines()[1:]:  # 跳过表头
-            chat_listbox.insert(tk.END, line)
-
-    def select_chat():
-        selection = chat_listbox.get(chat_listbox.curselection())
-        chat_id.set(selection.split()[0])
-        messagebox.showinfo("选择成功", f"当前群聊ID：{chat_id.get()}")
-
-    def handle_summary():
-        export_type = export_var.get()
-        cid = chat_id.get()
-        if not cid:
-            messagebox.showerror("错误", "请先选择群聊")
-            return
-
-        if export_type == "last":
-            n = entry_last.get()
-            cmd = [r'C:\tdl\tdl.exe', 'chat', 'export', '-c', cid, '-T', 'last', '-i', n,
-                   '--proxy', 'http://localhost:7890', '--with-content', '--all']
-        else:
-            h = float(entry_hour.get())
-            now = int(time.time())
-            since = now - int(h * 3600)
-            cmd = [r'C:\tdl\tdl.exe', 'chat', 'export', '-c', cid, '-T', 'time', '-i', f"{since},{now}",
-                   '--proxy', 'http://localhost:7890', '--with-content', '--all']
-        subprocess.run(cmd)
-
-        # summarize
-        with open("tdl-export.json", "r", encoding="utf-8") as f:
-            js = json.load(f)
-        all_text = "\n".join(m.get("text", "") for m in js["messages"] if "text" in m)
-
-        from openai import OpenAI
-        client = OpenAI(api_key=api_key.get(), base_url="https://api.deepseek.com")
-        resp = client.chat.completions.create(
-            model="deepseek-chat",
-            messages=[
-                {"role": "system", "content": "你是一个擅长总结聊天记录的助手"},
-                {"role": "user", "content": f"""请总结以下对话内容：
-- 若包含链接，尝试猜测其内容
-- 若讨论活动，请提取时间与地点
-- 若讨论游戏，请列出名称与要点
-- 请使用 __斜体__、**强调**、~~删除线~~、```等宽```、||剧透|| 格式
-
-内容：
-{all_text}
-"""}],
-            stream=False
-        )
-        result = resp.choices[0].message.content
-        with open("summary.txt", "w", encoding="utf-8") as f:
-            f.write(result)
-        messagebox.showinfo("总结完成", "摘要已生成，将发送到群聊")
-        subprocess.run([
-            r'C:\tdl\tdl.exe', 'up', '-c', cid, '-p', 'summary.txt', '--proxy', 'http://localhost:7890'
-        ])
-
-        set_setting("api_key", api_key.get())
-        set_setting("chat_id", cid)
-
-    # GUI 主体
     root = tk.Tk()
-    root.title("Telegram 聊天摘要助手")
+    root.title("Telegram 群聊助手")
+    root.geometry("800x600")
 
-    menu_bar = tk.Menu(root)
-    file_menu = tk.Menu(menu_bar, tearoff=0)
-    file_menu.add_command(label="关于", command=lambda: messagebox.showinfo("关于", "聊天摘要助手 v1.0"))
-    file_menu.add_separator()
-    file_menu.add_command(label="退出", command=root.quit)
-    menu_bar.add_cascade(label="设置", menu=file_menu)
-    root.config(menu=menu_bar)
+    # 左侧：载入群聊、导出设置、开始总结按钮
+    left_frame = ttk.Frame(root, padding=10)
+    left_frame.pack(side=tk.LEFT, fill=tk.Y)
 
-    frame = tk.Frame(root)
-    frame.pack(padx=10, pady=10)
 
-    tk.Button(frame, text="登录", command=handle_login).grid(row=0, column=0)
-    tk.Button(frame, text="查看群聊", command=handle_fetch_chats).grid(row=0, column=1)
+    # 载入群聊按钮事件
+    def load_chats():
+        try:
+            chats = chat_selector.list_chats()
+            # 清空表格
+            for item in tree.get_children():
+                tree.delete(item)
+            # 插入群聊列表
+            for chat in chats:
+                tree.insert("", tk.END, values=(
+                    chat['id'],  # 群聊ID
+                    chat['type'],  # 群聊类型
+                    chat['visible_name'],  # 显示名称
+                    chat.get('username', '-'),  # 用户名（可能不存在）
+                ))
+        except Exception as e:
+            messagebox.showinfo("成功", f"已载入 {len(chats)} 个群聊")
 
-    chat_listbox = tk.Listbox(frame, width=100)
-    chat_listbox.grid(row=1, column=0, columnspan=2)
-    tk.Button(frame, text="选择群聊", command=select_chat).grid(row=2, column=0, columnspan=2)
+    load_button = ttk.Button(left_frame, text="载入群聊", command=load_chats)
+    load_button.pack(fill=tk.X, pady=5)
 
-    chat_id = tk.StringVar()
-    export_var = tk.StringVar(value="last")
-    tk.Label(frame, text="导出方式：").grid(row=3, column=0)
-    tk.Radiobutton(frame, text="最新N条", variable=export_var, value="last").grid(row=4, column=0)
-    entry_last = tk.Entry(frame)
-    entry_last.grid(row=4, column=1)
-    tk.Radiobutton(frame, text="最近N小时", variable=export_var, value="time").grid(row=5, column=0)
-    entry_hour = tk.Entry(frame)
-    entry_hour.grid(row=5, column=1)
+    # 导出设置：单选按钮和数字输入框
+    export_frame = ttk.LabelFrame(left_frame, text="导出设置", padding=10)
+    export_frame.pack(fill=tk.X, pady=5)
+    mode_var = tk.StringVar()
+    rb_msgs = ttk.Radiobutton(export_frame, text="最近 N 条", variable=mode_var, value="msgs")
+    rb_hours = ttk.Radiobutton(export_frame, text="最近 N 小时", variable=mode_var, value="hours")
+    rb_msgs.pack(anchor=tk.W)
+    rb_hours.pack(anchor=tk.W)
+    input_frame = ttk.Frame(export_frame)
+    input_frame.pack(fill=tk.X, pady=2)
+    ttk.Label(input_frame, text="N = ").pack(side=tk.LEFT)
+    number_var = tk.IntVar()
+    entry = ttk.Entry(input_frame, textvariable=number_var, state="disabled", width=10)
+    entry.pack(side=tk.LEFT, padx=5)
+    def on_mode_change():
+        entry.config(state="normal")
+    rb_msgs.config(command=on_mode_change)
+    rb_hours.config(command=on_mode_change)
 
-    tk.Label(frame, text="DeepSeek API Key：").grid(row=6, column=0)
-    api_key = tk.StringVar()
-    tk.Entry(frame, textvariable=api_key, width=50).grid(row=6, column=1)
+    # 收藏夹设置，待补充
+    to_fav_var = tk.BooleanVar()
+    to_fav_check = ttk.Checkbutton(export_frame, text="导出到收藏夹", variable=to_fav_var)
+    to_fav_check.pack(anchor=tk.W)
 
-    tk.Button(frame, text="执行总结", command=handle_summary).grid(row=7, column=0, columnspan=2)
+    ttk.Label(export_frame, text="导出目标 CHAT:").pack(anchor=tk.W, pady=(10, 0))
+    chat_target_var = tk.StringVar()
+    chat_target_entry = ttk.Entry(export_frame, textvariable=chat_target_var, width=30)
+    chat_target_entry.pack(anchor=tk.W)
 
-    api_key.set(get_setting("api_key"))
-    chat_id.set(get_setting("chat_id"))
+
+    # 开始总结按钮事件
+    def start_summary():
+        selected = tree.selection()
+        if not selected:
+            messagebox.showwarning("未选择群聊", "请先选择一个群聊")
+            return
+        if mode_var.get() == "":
+            messagebox.showwarning("未选择导出方式", "请选择导出方式")
+            return
+        chat_id = tree.item(selected[0])['values'][0]
+        try:
+            n = number_var.get()
+            if n <= 0:
+                raise ValueError("N 必须为正整数")
+            if mode_var.get() == "msgs":
+                exporter.export_chat(chat_id, last_n=n)
+            else:
+                exporter.export_chat(chat_id, last_n_hours=n)
+            summary_text = summarizer.summarize_chat()
+            forwarder.forward_summary(chat_target_var.get().strip(), summary_text)
+            messagebox.showinfo("成功", "摘要已发送到群聊")
+        except Exception as e:
+            messagebox.showerror("错误", f"总结失败: {e}")
+
+    summary_button = ttk.Button(left_frame, text="开始总结", command=start_summary)
+    summary_button.pack(fill=tk.X, pady=5)
+
+    # 右侧：群聊列表表格和选中群聊信息
+    right_frame = ttk.Frame(root, padding=10)
+    right_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
+    columns = ("ID", "Type", "VisibleName", "Username")
+    tree = ttk.Treeview(right_frame, columns=columns, show="headings")
+    for col in columns:
+        tree.heading(col, text=col)
+        tree.column(col, anchor=tk.W)
+    # 绑定选中事件
+    def on_chat_select(event):
+        sel = tree.selection()
+        if sel:
+            item = tree.item(sel[0])
+            vals = item['values']
+            cid, cname = vals[0], vals[2]
+            selected_label.config(text=f"选中群聊: ID={cid}, 名称={cname}")
+    tree.bind("<<TreeviewSelect>>", on_chat_select)
+    scrollbar = ttk.Scrollbar(right_frame, orient=tk.VERTICAL, command=tree.yview)
+    tree.configure(yscrollcommand=scrollbar.set)
+    selected_label = ttk.Label(right_frame, text="未选择群聊")
+    selected_label.pack(side=tk.BOTTOM, fill=tk.X)
+    tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+    scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
     root.mainloop()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
