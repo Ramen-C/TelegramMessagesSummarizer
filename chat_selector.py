@@ -18,6 +18,6 @@ def list_chats():
         cmd.extend(['--proxy', proxy])
 
     # 调用 tdl
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    result = subprocess.run(cmd, capture_output=True, text=True,encoding="utf-8")
     data = json.loads(result.stdout)
     return data

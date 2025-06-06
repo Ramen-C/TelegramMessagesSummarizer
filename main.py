@@ -55,14 +55,61 @@ def main():
     rb_hours.config(command=on_mode_change)
 
     # 收藏夹设置，待补充
+    '''
     to_fav_var = tk.BooleanVar()
     to_fav_check = ttk.Checkbutton(export_frame, text="导出到收藏夹", variable=to_fav_var)
     to_fav_check.pack(anchor=tk.W)
+    '''
+    
 
-    ttk.Label(export_frame, text="导出目标 CHAT:").pack(anchor=tk.W, pady=(10, 0))
+    # N 下方显示当前选中群组的 VisibleName
+    group_name_label = ttk.Label(export_frame, text="未选择群聊")
+    group_name_label.pack(fill=tk.X, pady=(2, 5))
+
+    # 合并导出目标设置
+    custom_target_var = tk.BooleanVar(value=False)
+    def on_custom_target():
+        if custom_target_var.get():
+            chat_target_entry.config(state="normal")
+        else:
+            chat_target_entry.config(state="disabled")
+    custom_target_check = ttk.Checkbutton(
+        export_frame, text="自选导出目标", variable=custom_target_var, command=on_custom_target
+    )
+    custom_target_check.pack(anchor=tk.W, pady=(10, 0))
+
     chat_target_var = tk.StringVar()
-    chat_target_entry = ttk.Entry(export_frame, textvariable=chat_target_var, width=30)
+    chat_target_entry = ttk.Entry(export_frame, textvariable=chat_target_var, width=30, state="disabled")
     chat_target_entry.pack(anchor=tk.W)
+
+    # 设置 placeholder 功能
+    def set_placeholder():
+        if not chat_target_var.get():
+            chat_target_entry.config(state="normal")
+            chat_target_entry.delete(0, tk.END)
+            chat_target_entry.insert(0, "默认导出到收藏夹")
+            chat_target_entry.config(foreground="gray")
+            chat_target_entry.config(state="disabled")
+
+    def clear_placeholder(event=None):
+       if chat_target_entry.get() == "默认导出到收藏夹":
+            chat_target_entry.config(state="normal")
+            chat_target_entry.delete(0, tk.END)
+            chat_target_entry.config(foreground="black")
+
+    def on_custom_target():
+        if custom_target_var.get():
+            chat_target_entry.config(state="normal")
+            clear_placeholder()
+        else:
+            set_placeholder()
+
+   # 绑定 Entry 获取焦点时清除 placeholder
+    chat_target_entry.bind("<FocusIn>", clear_placeholder)
+    chat_target_entry.bind("<FocusOut>", lambda e: set_placeholder() if not chat_target_var.get() and custom_target_var.get() else None)
+
+    # 初始化 placeholder
+    set_placeholder()
 
 
     # 开始总结按钮事件
@@ -85,7 +132,14 @@ def main():
                 exporter.export_chat(chat_id, last_n_hours=n)
             filter_messages()
             summary_text = summarizer.summarize_chat()
-            forwarder.forward_summary(chat_target_var.get().strip(), summary_text)
+            # 判断导出目标
+            if custom_target_var.get():
+                target = chat_target_var.get().strip()
+                if not target:
+                    raise ValueError("请填写导出目标 CHAT")
+            else:
+                target = "FAVORITES"  # 你可以根据业务实际调整
+            forwarder.forward_summary(target, summary_text)
             messagebox.showinfo("成功", "摘要已发送到群聊")
         except Exception as e:
             messagebox.showerror("错误", f"总结失败: {e}")
@@ -101,7 +155,7 @@ def main():
     for col in columns:
         tree.heading(col, text=col)
         tree.column(col, anchor=tk.W)
-    # 绑定选中事件
+    # 绑定选中事件，更新 group_name_label
     def on_chat_select(event):
         sel = tree.selection()
         if sel:
@@ -109,6 +163,7 @@ def main():
             vals = item['values']
             cid, cname = vals[0], vals[2]
             selected_label.config(text=f"选中群聊: ID={cid}, 名称={cname}")
+            group_name_label.config(text=f"当前群组: {cname}")
     tree.bind("<<TreeviewSelect>>", on_chat_select)
     scrollbar = ttk.Scrollbar(right_frame, orient=tk.VERTICAL, command=tree.yview)
     tree.configure(yscrollcommand=scrollbar.set)
