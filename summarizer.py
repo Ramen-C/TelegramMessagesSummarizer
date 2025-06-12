@@ -1,5 +1,6 @@
 import json
 from openai import OpenAI
+from visualizer import generate_wordcloud
 
 def summarize_chat():
     """
@@ -74,4 +75,7 @@ def summarize_chat():
     summary = response.choices[0].message.content.strip()
     print("=== 聊天摘要 ===")
     print(summary)
+    
+    # 生成词云
+    generate_wordcloud(summary)  # 用摘要文本生成词云
     return summary
