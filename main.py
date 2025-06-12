@@ -138,7 +138,7 @@ def main():
                 if not target:
                     raise ValueError("请填写导出目标 CHAT")
             else:
-                target = "FAVORITES"  # 你可以根据业务实际调整
+                target = ""  # 你可以根据业务实际调整
             forwarder.forward_summary(target, summary_text)
             messagebox.showinfo("成功", "摘要已发送到群聊")
         except Exception as e:
