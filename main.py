@@ -1,8 +1,9 @@
 import tkinter as tk
-from tkinter import ttk, messagebox
+from tkinter import  ttk, messagebox
 import chat_selector, exporter, summarizer, forwarder
 from filter import filter_messages
-
+from PIL import Image, ImageTk
+from visualizer import generate_wordcloud
 
 def main():
     root = tk.Tk()
@@ -111,6 +112,19 @@ def main():
     # 初始化 placeholder
     set_placeholder()
 
+    # 右侧区域增加词云展示
+    wordcloud_label = ttk.Label(right_frame, text="摘要词云：")
+    wordcloud_label.pack(anchor=tk.W, pady=(8, 0))
+    wordcloud_canvas = tk.Label(right_frame)
+    wordcloud_canvas.pack(fill=tk.X, pady=(0, 8))
+
+    def show_wordcloud(img_path="wordcloud.png"):
+        img = Image.open(img_path)
+        img = img.resize((300, 150))
+        img_tk = ImageTk.PhotoImage(img)
+        wordcloud_canvas.config(image=img_tk)
+        wordcloud_canvas.image = img_tk  # 防止被垃圾回收
+
 
     # 开始总结按钮事件
     def start_summary():
@@ -132,15 +146,17 @@ def main():
                 exporter.export_chat(chat_id, last_n_hours=n)
             filter_messages()
             summary_text = summarizer.summarize_chat()
+            show_wordcloud("wordcloud.png")
             # 判断导出目标
             if custom_target_var.get():
                 target = chat_target_var.get().strip()
                 if not target:
                     raise ValueError("请填写导出目标 CHAT")
             else:
-                target = ""  # 你可以根据业务实际调整
+                target = "FAVORITES"  # 你可以根据业务实际调整
             forwarder.forward_summary(target, summary_text)
             messagebox.showinfo("成功", "摘要已发送到群聊")
+            messagebox.showinfo("成功", "摘要生成并展示词云！")
         except Exception as e:
             messagebox.showerror("错误", f"总结失败: {e}")
 
