@@ -16,7 +16,7 @@ def export_chat(chat_id, last_n=None, last_n_hours=None):
     proxy = config.get("proxy")  # 可为空
 
     if last_n is not None:
-        cmd = [config['tdl_path'], 'chat', 'export', '-c', str(chat_id), '-T', 'last', '-i', str(last_n),'--all','--with-content']
+        cmd = [config['tdl_path'], 'chat', 'export', '-c', str(chat_id), '-T', 'last', '-i', str(last_n),'--all','--with-content','--raw']
         if proxy:
             cmd.extend(['--proxy', proxy])
     elif last_n_hours is not None:

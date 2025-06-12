@@ -1,68 +1,48 @@
+# summarizer.py
+
 import json
 from openai import OpenAI
 
-def summarize_chat():
+# --- 核心改动 1: 函数签名改变，接收一个列表作为参数 ---
+def summarize_chat(formatted_messages: list):
     """
-    使用 DeepSeek API 对导出的聊天记录进行分析，并返回 Markdown 格式的摘要字符串。
+    接收一个格式化后的消息列表，调用 DeepSeek API 进行分析，并返回摘要字符串。
     """
-    # 读取 JSON 文件
-    with open('tdl-export-filtered.json', 'r', encoding='utf-8') as f:
-        data = json.load(f)
-
-    # 提取消息文本（兼容没有 text 的消息）
-    messages = [
-        msg['text'] for msg in data.get('messages', [])
-        if isinstance(msg.get('text'), str) and msg['text'].strip()
-    ]
-    chat_text = "\n".join(messages)
-
-    if not chat_text.strip():
+    if not formatted_messages:
         raise ValueError("没有可用的文本消息用于摘要。")
 
-    # 初始化 DeepSeek 客户端
+    # --- 核心改动 2: 直接用换行符连接列表内容，不再读取文件 ---
+    chat_text = "\n".join(formatted_messages)
+
+    # 初始化 DeepSeek 客户端 (请确保你的API Key在这里)
     client = OpenAI(
-        api_key='sk-80f4be0c573f49dfb31558c774ccf1f0',
+        api_key='sk-80f4be0c573f49dfb31558c774ccf1f0', # 您的 DeepSeek Key
         base_url="https://api.deepseek.com"
     )
 
-    # 构造对话提示
-    system_prompt = "你是一个擅长提取关键信息的聊天摘要专家。"
+    # (这里的 Prompt 保持不变，它设计得很好，可以直接使用)
+    system_prompt = "你是一位精通信息提取和内容归纳的资深社群运营分析师。"
     user_prompt = f"""
-    你是一名专业的 Telegram 群聊分析师，请根据以下对话内容生成简洁清晰的结构化摘要。你的任务包括：
+    作为一名专业的 Telegram 群聊分析师，请根据下方用 '---' 分隔的、包含匿名化用户（如 User A, User B）的聊天记录，生成一份简洁、精准、结构化的摘要报告。
+    聊天记录已按时间倒序排列（最新消息在前）。
 
-    1. **识别 URL 链接**，并根据上下文描述链接可能指向的内容。
-    2. **归纳对话中的主要议题**，包括：
-       - 活动相关：请明确活动的时间、地点、内容（如有）。
-       - 游戏讨论：标明游戏名称、核心观点、争议与共识。
-       - 技术/学习讨论：指出讨论的工具、语言、框架、问题与解决方案。
-    3. **提取关键词句或经典语录**（如有趣或值得引用的内容）。
+    你的核心任务是：
 
-    请将结果按以下结构输出，使用标准 Markdown：
+    1.  **核心议题归纳 (Main Topics)**:
+        - 识别并提炼出 2-4 个本次讨论的核心议题。
+    2.  **关键信息与决策 (Key Information & Decisions)**:
+        - 提取对话中所有明确的结论、决策或一致同意的观点。
+        - 整理出具体的待办事项（Action Items）。如果无，则注明“无”。
+    3.  **重要链接提取 (Important Links)**:
+        - 识别所有分享的 URL 链接并简要说明其内容。
+    4.  **金句或趣味发言 (Quotes & Highlights)**:
+        - 挑选出 1-10 条最有趣或最具代表性的发言。
 
-    ---
-
-    **📌 群聊摘要**
-
-    **主要议题：**
-    - …
-
-    **📎 链接说明：**
-    - `[链接文本](URL)`：推测内容为…
-
-    **💬 精选发言：**
-    - “…”
-
-    **🧠 关键词：**
-    - …
-
-    ---
-
-    请确保语言简洁、不重复，必要时可适度补全信息（例如未明确说明的链接内容）。以下为原始对话内容：
+    以下是原始聊天记录：
 
     {chat_text}
     """
 
-    # 调用 API 获取摘要
     response = client.chat.completions.create(
         model="deepseek-chat",
         messages=[
