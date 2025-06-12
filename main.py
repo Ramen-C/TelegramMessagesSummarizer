@@ -163,7 +163,6 @@ def main():
     # 初始化 placeholder
     set_placeholder()
 
-
     # 右侧区域增加词云展示
     wordcloud_label = ttk.Label(right_frame, text="摘要词云：")
     wordcloud_label.pack(anchor=tk.W, pady=(8, 0))
