@@ -203,15 +203,9 @@ def main():
                 if not target:
                     raise ValueError("请填写导出目标 CHAT")
             else:
-<<<<<<< HEAD
                 target = "FAVORITES"  # 你可以根据业务实际调整
             forwarder.forward_summary(target, summary)
             messagebox.showinfo("成功", "摘要生成并展示词云！")
-=======
-                target = ""  # 你可以根据业务实际调整
-            forwarder.forward_summary(target, summary_text)
-            messagebox.showinfo("成功", "摘要已发送到群聊")
->>>>>>> origin/main
         except Exception as e:
             messagebox.showerror("错误", f"总结失败: {e}")
 
