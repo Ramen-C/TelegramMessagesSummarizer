@@ -333,8 +333,8 @@ class App(tk.Tk):
             # 5. 生成词云 (可选)
             if self.config.get("generate_wordcloud", True):
                 self.update_progress("status_generating_wordcloud", 70)
-                generate_wordcloud(summary_text, "wordcloud.png")
-                img = Image.open("wordcloud.png");
+                generate_wordcloud(summary_text, "../export/wordcloud.png")
+                img = Image.open("../export/wordcloud.png");
                 img_tk = ImageTk.PhotoImage(img)
                 self.wordcloud_canvas.config(image=img_tk);
                 self.wordcloud_canvas.image = img_tk
