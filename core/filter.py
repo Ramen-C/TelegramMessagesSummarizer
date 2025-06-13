@@ -2,8 +2,7 @@
 
 import json
 
-
-def filter_and_format_messages(input_path='tdl-export.json'):
+def filter_and_format_messages(input_path='../json/tdl-export.json'): # <--- 在这里修改默认路径
     """
     读取原始导出文件，进行过滤、匿名化和格式化，并返回一个倒序的字符串列表。
 
