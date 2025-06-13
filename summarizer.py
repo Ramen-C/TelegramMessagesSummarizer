@@ -2,7 +2,12 @@
 
 import json
 from openai import OpenAI
+from pathlib import Path
 
+# 读取配置
+config_path = Path('config.json')
+config = json.loads(config_path.read_text())
+proxy = config.get("api_key")  # 可为空
 # --- 核心改动 1: 函数签名改变，接收一个列表作为参数 ---
 def summarize_chat(formatted_messages: list):
     """
