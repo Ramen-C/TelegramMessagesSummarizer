@@ -12,8 +12,9 @@ def generate_wordcloud(text: str, output_path="wordcloud.png"):
         text (str): 用于生成词云的文本。
         output_path (str): 生成的图片保存路径。
     """
-    # 字体路径，msyh.ttc (微软雅黑) 是Windows自带的，其他系统可能需要自行下载
-    font_path = "msyh.ttc"
+    # 字体路径，本地 msyh.ttf (微软雅黑)
+    font_path = os.path.join(os.path.dirname(__file__), "resources", "msyh.ttf")
+
     # 检查字体文件是否存在，如果不存在则不使用指定字体，避免报错
     if not os.path.exists(font_path):
         font_path = '/System/Library/Fonts/STHeiti Light.ttc'

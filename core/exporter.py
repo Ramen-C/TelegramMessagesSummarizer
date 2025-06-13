@@ -9,7 +9,7 @@ def export_chat(chat_id, last_n=None, last_n_hours=None, progress_callback=None)
     """
     根据传入参数导出指定群聊的消息记录。支持通过回调函数报告进度。
     """
-    config_path = Path('config.json')
+    config_path = Path('../json/config.json')
     config = json.loads(config_path.read_text())
     proxy = config.get("proxy")
 

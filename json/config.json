@@ -3,5 +3,5 @@
   "proxy": "http://localhost:7890",
   "api": "sk-80f4be0c573f49dfb31558c774ccf1f0",
   "language": "zh",
-  "generate_wordcloud": false
+  "generate_wordcloud": true
 }

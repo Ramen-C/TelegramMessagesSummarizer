@@ -9,7 +9,7 @@ def list_chats(progress_callback=None):
     调用 `tdl chat ls -o json` 命令，直接解析其 JSON 输出。
     此版本更简洁、更健壮，直接处理完整的 stdout。
     """
-    config_path = Path('config.json')
+    config_path = Path('../json/config.json')
     try:
         config = json.loads(config_path.read_text())
     except (FileNotFoundError, json.JSONDecodeError):

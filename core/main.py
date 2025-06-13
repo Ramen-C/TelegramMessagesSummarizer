@@ -17,8 +17,8 @@ import forwarder
 from filter import filter_and_format_messages
 from visualizer import generate_wordcloud
 
-CONFIG_FILE = Path("config.json")
-CHATS_CACHE_FILE = Path("chats.json")
+CONFIG_FILE = Path("../json/config.json")
+CHATS_CACHE_FILE = Path("../json/chats.json")
 
 
 def load_config():

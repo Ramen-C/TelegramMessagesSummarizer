@@ -8,7 +8,7 @@ def forward_summary(chat_id, summary, progress_callback=None):
     """
     使用 tdl up 将摘要文件 summary.txt 上传到指定群聊。支持进度回调。
     """
-    config_path = Path('config.json')
+    config_path = Path('../json/config.json')
     config = json.loads(config_path.read_text())
     proxy = config.get("proxy")
 
