@@ -12,7 +12,7 @@ def forward_summary(chat_id, summary, progress_callback=None):
     config = json.loads(config_path.read_text())
     proxy = config.get("proxy")
 
-    with open('summary.txt', 'w', encoding='utf-8') as f:
+    with open('../export/summary.txt', 'w', encoding='utf-8') as f:
         f.write(summary)
 
     # 如果 chat_id 为空或不是有效数字, tdl 会默认发到收藏夹
