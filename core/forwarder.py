@@ -16,7 +16,7 @@ def forward_summary(chat_id, summary, progress_callback=None):
         f.write(summary)
 
     # 如果 chat_id 为空或不是有效数字, tdl 会默认发到收藏夹
-    cmd = [config["tdl_path"], 'up', '-p', 'summary.txt']
+    cmd = [config["tdl_path"], 'up', '-p', '../export/summary.txt']
     if str(chat_id).strip():
         cmd.extend(['-c', str(chat_id)])
 
