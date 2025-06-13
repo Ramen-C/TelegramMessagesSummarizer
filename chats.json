@@ -1,0 +1,1031 @@
+[
+  {
+    "id": 2021270850,
+    "type": "group",
+    "visible_name": "リリーホワイト 生産基地",
+    "username": "LilywhiteRe"
+  },
+  {
+    "id": 1951947656,
+    "type": "group",
+    "visible_name": "PiliPili",
+    "username": "PiliPiliTv"
+  },
+  {
+    "id": 972890262,
+    "type": "group",
+    "visible_name": "人间之里",
+    "username": "-"
+  },
+  {
+    "id": 1154313178,
+    "type": "group",
+    "visible_name": "Coder Offtopic 中文群",
+    "username": "coder_ot"
+  },
+  {
+    "id": 1355449106,
+    "type": "group",
+    "visible_name": "心惊报根据地",
+    "username": "xinjingdailychatroom"
+  },
+  {
+    "id": 2001429102,
+    "type": "group",
+    "visible_name": "番禺優梦MMK休息室",
+    "username": "youmentea"
+  },
+  {
+    "id": 2023521290,
+    "type": "group",
+    "visible_name": "广州女仆联盟mmk",
+    "username": "gzmmklm"
+  },
+  {
+    "id": 1163125684,
+    "type": "group",
+    "visible_name": "V2EX 交流群",
+    "username": "V2EXPro"
+  },
+  {
+    "id": 2456852179,
+    "type": "group",
+    "visible_name": "ClawCloud☁️ 讨论群-代充余额",
+    "username": "ClawCloud_Chat"
+  },
+  {
+    "id": 2139954778,
+    "type": "group",
+    "visible_name": "麥當勞交流群"
+  },
+  {
+    "id": 1216816802,
+    "type": "channel",
+    "visible_name": "NEP.Anime | 动画仓库",
+    "username": "AnimeNep"
+  },
+  {
+    "id": 1570215033,
+    "type": "channel",
+    "visible_name": "FREE 中文",
+    "username": "FreeChinese"
+  },
+  {
+    "id": 1316299463,
+    "type": "channel",
+    "visible_name": "联合早报 即时报道",
+    "username": "zaobao_news"
+  },
+  {
+    "id": 1295460600,
+    "type": "group",
+    "visible_name": "[老师教我力学] 摄影",
+    "username": "cnphotog"
+  },
+  {
+    "id": 1472283197,
+    "type": "channel",
+    "visible_name": "风向旗参考快讯",
+    "username": "xhqcankao"
+  },
+  {
+    "id": 2390721905,
+    "type": "group",
+    "visible_name": "egg rolls 闲聊群"
+  },
+  {
+    "id": 1434817225,
+    "type": "channel",
+    "visible_name": "心惊报",
+    "username": "xinjingdaily"
+  },
+  {
+    "id": 1125107539,
+    "type": "channel",
+    "visible_name": "科技圈🎗在花频道📮"
+  },
+  {
+    "id": 1902069864,
+    "type": "group",
+    "visible_name": "Magic Cloud 龙系列",
+    "username": "MagicCloud2"
+  },
+  {
+    "id": 2468595339,
+    "type": "group",
+    "visible_name": "TelegramSearch"
+  },
+  {
+    "id": 1953631884,
+    "type": "channel",
+    "visible_name": "赛博安全威胁情报🥸",
+    "username": "Cybersec_threat"
+  },
+  {
+    "id": 1305028699,
+    "type": "channel",
+    "visible_name": "树洞🌳群友问🗳万事答"
+  },
+  {
+    "id": 4900528992,
+    "type": "group",
+    "visible_name": "高级软件实训",
+    "username": "-"
+  },
+  {
+    "id": 6555253970,
+    "type": "private",
+    "visible_name": "拉面",
+    "username": "Ramen_C"
+  },
+  {
+    "id": 1471535960,
+    "type": "channel",
+    "visible_name": "今天你想跑路了吗？？",
+    "username": "getoutforchina"
+  },
+  {
+    "id": 1085650365,
+    "type": "group",
+    "visible_name": "V2EX后花园 v2.0",
+    "username": "goV2EX"
+  },
+  {
+    "id": 2469684134,
+    "type": "group",
+    "visible_name": "Infini Community",
+    "username": "Infini_official",
+    "topics": [
+      {
+        "id": 11,
+        "title": "Welcome"
+      },
+      {
+        "id": 9,
+        "title": "Announcements"
+      },
+      {
+        "id": 81,
+        "title": "Support"
+      },
+      {
+        "id": 2376,
+        "title": "FAQ 常见问题"
+      },
+      {
+        "id": 36207,
+        "title": "Maintenance Notice"
+      },
+      {
+        "id": 1,
+        "title": "🇨🇳Chinese community"
+      },
+      {
+        "id": 24914,
+        "title": "🐱Taiwan community"
+      },
+      {
+        "id": 24958,
+        "title": "🇪🇸Spanish community"
+      },
+      {
+        "id": 2908,
+        "title": "🇺🇸English community"
+      },
+      {
+        "id": 24058,
+        "title": "🇸🇦Arab community"
+      }
+    ]
+  },
+  {
+    "id": 1846014223,
+    "type": "channel",
+    "visible_name": "批话TV",
+    "username": "pusshit_tv_cn"
+  },
+  {
+    "id": 1258292904,
+    "type": "group",
+    "visible_name": "Notion 中文社区",
+    "username": "Notionso",
+    "topics": [
+      {
+        "id": 1,
+        "title": "Welcome"
+      },
+      {
+        "id": 334746,
+        "title": "导航"
+      },
+      {
+        "id": 330003,
+        "title": "Notion 资讯"
+      },
+      {
+        "id": 329996,
+        "title": "闲聊版"
+      },
+      {
+        "id": 382179,
+        "title": "Notion Updates"
+      },
+      {
+        "id": 334654,
+        "title": "Notion AI 讨论区"
+      },
+      {
+        "id": 334805,
+        "title": "Notion 问答"
+      },
+      {
+        "id": 329995,
+        "title": "中文版本地化讨论"
+      },
+      {
+        "id": 358516,
+        "title": "Notion API 开发讨论"
+      },
+      {
+        "id": 335993,
+        "title": "语音区"
+      },
+      {
+        "id": 330001,
+        "title": "Notion 资源分享"
+      }
+    ]
+  },
+  {
+    "id": 1152642090,
+    "type": "channel",
+    "visible_name": "PIXIV站每日 Top50搬运|动漫|ACG|二次元|每日精选图片|動漫|P站",
+    "username": "pixiv_top50"
+  },
+  {
+    "id": 1174453949,
+    "type": "channel",
+    "visible_name": "瞎玩菌 #SFW",
+    "username": "blindgamer"
+  },
+  {
+    "id": 1462485900,
+    "type": "group",
+    "visible_name": "RouterGroup|软路由|硬路由|外贸电视",
+    "username": "ruanlu"
+  },
+  {
+    "id": 2185741993,
+    "type": "group",
+    "visible_name": "Anki 日语交流群"
+  },
+  {
+    "id": 1639094134,
+    "type": "channel",
+    "visible_name": "🏳️‍⚧️🍬猫猫Cafe Channel🥞（尘白禁区猫猫大队）",
+    "username": "Mtfchannel10"
+  },
+  {
+    "id": 1460835648,
+    "type": "channel",
+    "visible_name": "安利 (NSFW)",
+    "username": "qingan567"
+  },
+  {
+    "id": 1394398195,
+    "type": "channel",
+    "visible_name": "[合租通知] Netflix|YouTube|Spotify|office365|Hbo|Surge|美剧|等音乐影视聊天机场电影盒子",
+    "username": "hezu2"
+  },
+  {
+    "id": 1922696978,
+    "type": "channel",
+    "visible_name": "ExLOLI - 每日萝莉本子"
+  },
+  {
+    "id": 1056982813,
+    "type": "group",
+    "visible_name": "Java 编程语言",
+    "username": "Javaer"
+  },
+  {
+    "id": 1164706519,
+    "type": "channel",
+    "visible_name": "二手🐴",
+    "username": "SecHorse"
+  },
+  {
+    "id": 1104204833,
+    "type": "channel",
+    "visible_name": "Solidot",
+    "username": "solidot"
+  },
+  {
+    "id": 1112882687,
+    "type": "channel",
+    "visible_name": "MATLAB TIPS",
+    "username": "MATLAB_tips"
+  },
+  {
+    "id": 1364377229,
+    "type": "channel",
+    "visible_name": "学习墙国🐸",
+    "username": "XueXi_China"
+  },
+  {
+    "id": 1428699087,
+    "type": "channel",
+    "visible_name": "85.60×53.98卡粉订阅/提醒",
+    "username": "DocOfCard"
+  },
+  {
+    "id": 1351848116,
+    "type": "group",
+    "visible_name": "MUG_ZH|泛用型音游中文讨论群组|说不定内含萌狼",
+    "username": "mug_zh"
+  },
+  {
+    "id": 1335298003,
+    "type": "channel",
+    "visible_name": "不存在的世界",
+    "username": "illusory_world"
+  },
+  {
+    "id": 1893758735,
+    "type": "channel",
+    "visible_name": "心惊报🔞成人版",
+    "username": "xinjingdaily_adult"
+  },
+  {
+    "id": 1181946843,
+    "type": "channel",
+    "visible_name": "猫猫窝🐈🐈‍⬛",
+    "username": "efsg_qzone"
+  },
+  {
+    "id": 1738944391,
+    "type": "channel",
+    "visible_name": "VN视觉小说汉化补丁遗产归档/VN視覺小說漢化補丁遺產歸檔",
+    "username": "vn_patch"
+  },
+  {
+    "id": 1265059849,
+    "type": "channel",
+    "visible_name": "Digital Immigrants丨Want Want Channel",
+    "username": "Licensesss"
+  },
+  {
+    "id": 1872719322,
+    "type": "channel",
+    "visible_name": "AI探索指南",
+    "username": "aigc1024"
+  },
+  {
+    "id": 1620029174,
+    "type": "channel",
+    "visible_name": "『雨夜凉亭』ACG频道",
+    "username": "therainArchive"
+  },
+  {
+    "id": 1280703189,
+    "type": "channel",
+    "visible_name": "不求甚解",
+    "username": "fakeye"
+  },
+  {
+    "id": 1559138954,
+    "type": "channel",
+    "visible_name": "Warp Plus - Free VPN Keys",
+    "username": "warpplus"
+  },
+  {
+    "id": 2544001455,
+    "type": "channel",
+    "visible_name": "毎日一問日本語N2",
+    "username": "daily_jlptn2"
+  },
+  {
+    "id": 1469825857,
+    "type": "channel",
+    "visible_name": "宁宁の收藏夹",
+    "username": "Daily0721"
+  },
+  {
+    "id": 1099115683,
+    "type": "channel",
+    "visible_name": "〄FW",
+    "username": "JISFW"
+  },
+  {
+    "id": 1571475418,
+    "type": "channel",
+    "visible_name": "里番 黄油聚集地",
+    "username": "lifanhuangyouxi"
+  },
+  {
+    "id": 1234165693,
+    "type": "channel",
+    "visible_name": "每日不科研日常🤓 | 💵",
+    "username": "eqewe"
+  },
+  {
+    "id": 1077688074,
+    "type": "channel",
+    "visible_name": "Karen医生の日常",
+    "username": "KarenMoe"
+  },
+  {
+    "id": 2059459006,
+    "type": "channel",
+    "visible_name": "麦门客服热线反馈"
+  },
+  {
+    "id": 1458774381,
+    "type": "channel",
+    "visible_name": "NASA每日天文图片 APOD",
+    "username": "APOD_hans"
+  },
+  {
+    "id": 1263252074,
+    "type": "channel",
+    "visible_name": "SomeACG | 每日少女壁纸 🍖",
+    "username": "SomeACG"
+  },
+  {
+    "id": 1778419548,
+    "type": "channel",
+    "visible_name": "萝莉制服写真",
+    "username": "gs7y2g7eg2"
+  },
+  {
+    "id": 1318934522,
+    "type": "channel",
+    "visible_name": "大头打飞机",
+    "username": "BigXhead_Aeroplane"
+  },
+  {
+    "id": 1542651520,
+    "type": "channel",
+    "visible_name": "黄油仓库"
+  },
+  {
+    "id": 1181224837,
+    "type": "channel",
+    "visible_name": "APPDO 数字生活指南",
+    "username": "AppDoDo"
+  },
+  {
+    "id": 1489832110,
+    "type": "channel",
+    "visible_name": "👋jun😎士🌲坦🌲ding🏯堡💊",
+    "username": "cshs_edu_pill"
+  },
+  {
+    "id": 1377035755,
+    "type": "channel",
+    "visible_name": "Telegram 抽奖活动导航 (Cn lottery)",
+    "username": "Lottery_home"
+  },
+  {
+    "id": 1844575188,
+    "type": "channel",
+    "visible_name": "安卓黄油",
+    "username": "Galgamesisn"
+  },
+  {
+    "id": 1678540823,
+    "type": "channel",
+    "visible_name": "黄油中心"
+  },
+  {
+    "id": 1120166141,
+    "type": "channel",
+    "visible_name": "一起偷偷观察 DIYgod",
+    "username": "awesomeDIYgod"
+  },
+  {
+    "id": 2355510639,
+    "type": "group",
+    "visible_name": "贵物师友会"
+  },
+  {
+    "id": 7687057029,
+    "type": "private",
+    "visible_name": "小周"
+  },
+  {
+    "id": 2527570636,
+    "type": "channel",
+    "visible_name": "egg rolls 频道"
+  },
+  {
+    "id": 1378594303,
+    "type": "channel",
+    "visible_name": "层叠 - The Cascading",
+    "username": "outvivid"
+  },
+  {
+    "id": 1660571863,
+    "type": "channel",
+    "visible_name": "AKILE NOTICE",
+    "username": "akile_notice"
+  },
+  {
+    "id": 1153607708,
+    "type": "channel",
+    "visible_name": "浮生东京",
+    "username": "LifeJapan"
+  },
+  {
+    "id": 1686342813,
+    "type": "channel",
+    "visible_name": "宁宁の私藏夹 NSFW"
+  },
+  {
+    "id": 2245001230,
+    "type": "channel",
+    "visible_name": "Anki 日语频道"
+  },
+  {
+    "id": 7434334300,
+    "type": "private",
+    "visible_name": "小马（转账语音确认）"
+  },
+  {
+    "id": 1681341595,
+    "type": "channel",
+    "visible_name": "nmBot 频道",
+    "username": "nmbotchannel"
+  },
+  {
+    "id": 1386669638,
+    "type": "channel",
+    "visible_name": "每日摄影观察",
+    "username": "cnphotog_collect"
+  },
+  {
+    "id": 1664303296,
+    "type": "channel",
+    "visible_name": "Rosmontis's Daily🔆",
+    "username": "Rosmontis_Daily"
+  },
+  {
+    "id": 1316082208,
+    "type": "channel",
+    "visible_name": "擅长搜索的高木同学",
+    "username": "gaomutongxue"
+  },
+  {
+    "id": 5743736356,
+    "type": "private",
+    "visible_name": "Tanimasu",
+    "username": "Trasky_3101"
+  },
+  {
+    "id": 6201519547,
+    "type": "private",
+    "visible_name": "Ranchel Wood"
+  },
+  {
+    "id": 7359060743,
+    "type": "private",
+    "visible_name": "奈酱",
+    "username": "Konaichanbot"
+  },
+  {
+    "id": 5314653481,
+    "type": "private",
+    "visible_name": "Premium Bot",
+    "username": "PremiumBot"
+  },
+  {
+    "id": 93372553,
+    "type": "private",
+    "visible_name": "BotFather",
+    "username": "BotFather"
+  },
+  {
+    "id": 6067757571,
+    "type": "private",
+    "visible_name": "苍玄",
+    "username": "Misakuraxxz"
+  },
+  {
+    "id": 7330918158,
+    "type": "private"
+  },
+  {
+    "id": 5837925973,
+    "type": "private",
+    "visible_name": "Retr0_ Jaxon",
+    "username": "retro_jaxon"
+  },
+  {
+    "id": 777000,
+    "type": "private",
+    "visible_name": "Telegram"
+  },
+  {
+    "id": 1186466617,
+    "type": "channel",
+    "visible_name": "每日羊角观察 💢",
+    "username": "GZMTR_Pill"
+  },
+  {
+    "id": 5868563052,
+    "type": "private",
+    "visible_name": "Sticker Downloader",
+    "username": "stickers_download_bot"
+  },
+  {
+    "id": 5770101555,
+    "type": "private",
+    "visible_name": "极搜🔍中文搜索@JISOU"
+  },
+  {
+    "id": 1476547783,
+    "type": "channel",
+    "visible_name": "网络安全笔记",
+    "username": "tsecrecord"
+  },
+  {
+    "id": 1894455046,
+    "type": "channel",
+    "visible_name": "暨南報社 🎓 Chicken South's Daily",
+    "username": "jnu983"
+  },
+  {
+    "id": 2138299863,
+    "type": "group",
+    "visible_name": "操死你妈"
+  },
+  {
+    "id": 1302989285,
+    "type": "channel",
+    "visible_name": "速学与笔记管理艺术",
+    "username": "anki_keeper"
+  },
+  {
+    "id": 1241814235,
+    "type": "channel",
+    "visible_name": "少女实在是太美好了",
+    "username": "tastegirl"
+  },
+  {
+    "id": 449972946,
+    "type": "private",
+    "visible_name": "お気に入りのステッカー :ウクライナ:",
+    "username": "fStikBot"
+  },
+  {
+    "id": 2117424923,
+    "type": "channel",
+    "visible_name": "Yamby Release",
+    "username": "yamby_release"
+  },
+  {
+    "id": 1282369020,
+    "type": "channel",
+    "visible_name": "中科大💌鹊桥",
+    "username": "ustc_pill"
+  },
+  {
+    "id": 2328287684,
+    "type": "channel",
+    "visible_name": "ClawCloud☁️ News",
+    "username": "ClawCloud_News"
+  },
+  {
+    "id": 7590483638,
+    "type": "private",
+    "visible_name": "时利和社工库",
+    "username": "slhsgk_bot"
+  },
+  {
+    "id": 6834191944,
+    "type": "private",
+    "visible_name": "穗",
+    "username": "saitosks"
+  },
+  {
+    "id": 1332315040,
+    "type": "channel",
+    "visible_name": "華南理工 # 快 跑",
+    "username": "scut_syndrome"
+  },
+  {
+    "id": 1077529324,
+    "type": "channel",
+    "visible_name": "科技圈的日常",
+    "username": "misakatech"
+  },
+  {
+    "id": 1385916744,
+    "type": "channel",
+    "visible_name": "南科大今天完了吗",
+    "username": "SUSTechGG"
+  },
+  {
+    "id": 1271266957,
+    "type": "private",
+    "visible_name": "Replies",
+    "username": "replies"
+  },
+  {
+    "id": 7519935145,
+    "type": "private"
+  },
+  {
+    "id": 7088469716,
+    "type": "private",
+    "visible_name": "Jono Taro",
+    "username": "Reason1124"
+  },
+  {
+    "id": 1920852967,
+    "type": "channel",
+    "visible_name": "🌽也能穿女装嘛",
+    "username": "yuumiwithlolita"
+  },
+  {
+    "id": 8039853555,
+    "type": "private",
+    "visible_name": "钱多多"
+  },
+  {
+    "id": 1463347483,
+    "type": "channel",
+    "visible_name": "广东供液大学",
+    "username": "GDUT_Pill"
+  },
+  {
+    "id": 178220800,
+    "type": "private",
+    "visible_name": "Spam Info Bot",
+    "username": "SpamBot"
+  },
+  {
+    "id": 6666234512,
+    "type": "private",
+    "visible_name": "P站小助手",
+    "username": "PiliPiliUltraTv_bot"
+  },
+  {
+    "id": 2441020684,
+    "type": "channel",
+    "visible_name": "猫猫夜谈"
+  },
+  {
+    "id": 1326008198,
+    "type": "private",
+    "visible_name": "Telegram 抽奖助手",
+    "username": "cnLottery_bot"
+  },
+  {
+    "id": 1922358734,
+    "type": "channel",
+    "visible_name": "ExLOLI - 每日萝莉本子 - Reborn",
+    "username": "exlolicon2"
+  },
+  {
+    "id": 5293760834,
+    "type": "private",
+    "visible_name": "KinhRoBot",
+    "username": "KinhRoBot"
+  },
+  {
+    "id": 439757700,
+    "type": "private",
+    "visible_name": "TGStat Bot",
+    "username": "TGStat_Bot"
+  },
+  {
+    "id": 1987570482,
+    "type": "channel",
+    "visible_name": "Z-Library Official官方中文🇨🇳 📚",
+    "username": "zlib_china_official"
+  },
+  {
+    "id": 1836429182,
+    "type": "channel",
+    "visible_name": "Z-Library Official 📚",
+    "username": "zlibrary_official"
+  },
+  {
+    "id": 1507361882,
+    "type": "channel",
+    "visible_name": "RailForWork Official Channel",
+    "username": "railforwork"
+  },
+  {
+    "id": 4704250867,
+    "type": "group",
+    "visible_name": "贵物师友会",
+    "username": "-"
+  },
+  {
+    "id": 5280558418,
+    "type": "private",
+    "visible_name": "市谷有咲 official"
+  },
+  {
+    "id": 6451287754,
+    "type": "private",
+    "visible_name": "candy YU"
+  },
+  {
+    "id": 1362783026,
+    "type": "channel",
+    "visible_name": "全网漫游指南",
+    "username": "TheWebGuide"
+  },
+  {
+    "id": 1560711650,
+    "type": "private",
+    "visible_name": "全能搜",
+    "username": "quannengsobot"
+  },
+  {
+    "id": 1296114136,
+    "type": "channel",
+    "visible_name": "程序员资源分享频道",
+    "username": "gotoshare"
+  },
+  {
+    "id": 275799522,
+    "type": "private",
+    "visible_name": "Previews",
+    "username": "previews"
+  },
+  {
+    "id": 2036649576,
+    "type": "channel",
+    "visible_name": "Loli_Moe_Paradise",
+    "username": "loli_collection_group"
+  },
+  {
+    "id": 6127107318,
+    "type": "private",
+    "visible_name": "学园都市书库人机交互终端",
+    "username": "rainbaby_search_bot"
+  },
+  {
+    "id": 1031952739,
+    "type": "private",
+    "visible_name": "🇺🇦 QuotLy",
+    "username": "QuotLyBot"
+  },
+  {
+    "id": 1243491003,
+    "type": "channel",
+    "visible_name": "深大的今日份药丸",
+    "username": "SZU_GGNews"
+  },
+  {
+    "id": 7764903182,
+    "type": "private"
+  },
+  {
+    "id": 7249823974,
+    "type": "private",
+    "visible_name": "Georges Sorrow",
+    "username": "l67060muj5516"
+  },
+  {
+    "id": 5403697680,
+    "type": "private",
+    "visible_name": "Warp Plus - Free VPN, Proxy",
+    "username": "generatewarpplusbot"
+  },
+  {
+    "id": 7394830279,
+    "type": "private"
+  },
+  {
+    "id": 7246459117,
+    "type": "private"
+  },
+  {
+    "id": 1346657939,
+    "type": "channel",
+    "visible_name": "[好读] ReadFine电子书屋",
+    "username": "Readfine"
+  },
+  {
+    "id": 7227143280,
+    "type": "private"
+  },
+  {
+    "id": 1973986615,
+    "type": "channel",
+    "visible_name": "akame team – bot development / updates",
+    "username": "akamemoe"
+  },
+  {
+    "id": 6970158221,
+    "type": "private",
+    "visible_name": "EXIA",
+    "username": "gn001bot"
+  },
+  {
+    "id": 6420220651,
+    "type": "private",
+    "visible_name": "抽奖机器人",
+    "username": "Lottery8Bot"
+  },
+  {
+    "id": 6749098224,
+    "type": "private"
+  },
+  {
+    "id": 7021044158,
+    "type": "private",
+    "visible_name": "麥當勞❤️送餐机器人",
+    "username": "McDLdshEartBot"
+  },
+  {
+    "id": 2002566769,
+    "type": "channel",
+    "visible_name": "知否（群友问精选）",
+    "username": "zhi_fou"
+  },
+  {
+    "id": 7147119683,
+    "type": "private",
+    "visible_name": "u0",
+    "username": "Youlin000"
+  },
+  {
+    "id": 1404457467,
+    "type": "private",
+    "visible_name": "CloudMusicDownloader",
+    "username": "Music163bot"
+  },
+  {
+    "id": 4147171668,
+    "type": "group",
+    "visible_name": "操死你妈",
+    "username": "-"
+  },
+  {
+    "id": 5137890915,
+    "type": "private",
+    "visible_name": "NeoAuthBot",
+    "username": "NeoAuthBot"
+  },
+  {
+    "id": 6809013691,
+    "type": "private"
+  },
+  {
+    "id": 4169061125,
+    "type": "group",
+    "visible_name": "SMLS-莉莉白生产基地",
+    "username": "-"
+  },
+  {
+    "id": 6638502026,
+    "type": "private"
+  },
+  {
+    "id": 6784305794,
+    "type": "private",
+    "visible_name": "BanG Dream! It’s MyGO!!!!!",
+    "username": "haruhikage_bot"
+  },
+  {
+    "id": 6617510876,
+    "type": "private",
+    "visible_name": "JarnOvO",
+    "username": "JarnOvO"
+  },
+  {
+    "id": 6478845805,
+    "type": "private",
+    "visible_name": "Noraneko ."
+  },
+  {
+    "id": 1624293400,
+    "type": "private",
+    "visible_name": "cloud player",
+    "username": "cloudplayer258"
+  },
+  {
+    "id": 1855542885,
+    "type": "channel",
+    "visible_name": "美女收集器👗",
+    "username": "meinvshouji"
+  },
+  {
+    "id": 1417516653,
+    "type": "channel",
+    "visible_name": "颜值即正义",
+    "username": "yzjzy"
+  },
+  {
+    "id": 1230326605,
+    "type": "channel",
+    "visible_name": "Emby 学习小秘",
+    "username": "EmbyNoisyX"
+  }
+]
