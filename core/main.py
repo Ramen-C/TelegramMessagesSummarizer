@@ -1,10 +1,11 @@
 # main.py
 
 import tkinter as tk
-from tkinter import ttk, messagebox, scrolledtext
+from tkinter import messagebox, ttk, scrolledtext
 from PIL import Image, ImageTk
 import json
 from pathlib import Path
+import tkinter.font as tkfont
 import threading
 import queue
 
@@ -16,99 +17,11 @@ import summarizer
 import forwarder
 from filter import filter_and_format_messages
 from visualizer import generate_wordcloud
+from loadhelper import load_config
+from settings_ui import open_settings_window
 
 CONFIG_FILE = Path("../settings/config.json")
 CHATS_CACHE_FILE = Path("../settings/chats.json")
-
-
-def load_config():
-    """加载配置文件，如果文件不存在或损坏，则创建并使用默认文件。"""
-    default_config = {
-        "tdl_path": "tdl",
-        "proxy": "",
-        "api": "sk-...",
-        "language": "zh",
-        "generate_wordcloud": True
-    }
-    if not CONFIG_FILE.exists():
-        with open(CONFIG_FILE, 'w', encoding='utf-8') as f:
-            json.dump(default_config, f, indent=2, ensure_ascii=False)
-        return default_config
-
-    try:
-        with open(CONFIG_FILE, 'r', encoding='utf-8') as f:
-            config = json.load(f)
-            # 确保所有键都存在
-            for key, value in default_config.items():
-                config.setdefault(key, value)
-            return config
-    except (json.JSONDecodeError, TypeError):
-        messagebox.showerror("Config Error", "settings.settings is corrupted. Using default settings.")
-        return default_config
-
-
-def save_config(config_data):
-    """保存配置到文件。"""
-    with open(CONFIG_FILE, 'w', encoding='utf-8') as f:
-        json.dump(config_data, f, indent=2, ensure_ascii=False)
-
-
-def open_settings_window(parent):
-    """打开设置窗口，包含语言和词云选项。"""
-    settings_win = tk.Toplevel(parent)
-    settings_win.title(_("settings_title"))
-    settings_win.geometry("480x280")
-    settings_win.resizable(False, False)
-    settings_win.transient(parent)
-    settings_win.grab_set()
-
-    config = load_config()
-
-    # --- NEW: 变量定义 ---
-    tdl_path_var = tk.StringVar(value=config.get("tdl_path", "tdl"))
-    proxy_var = tk.StringVar(value=config.get("proxy", ""))
-    api_key_var = tk.StringVar(value=config.get("api", ""))
-    lang_var = tk.StringVar(value=config.get("language", "zh"))
-    wordcloud_var = tk.BooleanVar(value=config.get("generate_wordcloud", True))
-
-    main_frame = ttk.Frame(settings_win, padding=15)
-    main_frame.pack(fill=tk.BOTH, expand=True)
-
-    # --- UI 元素使用翻译函数 `_()` ---
-    ttk.Label(main_frame, text=_("tdl_path")).grid(row=0, column=0, sticky=tk.W, pady=4)
-    ttk.Entry(main_frame, textvariable=tdl_path_var, width=40).grid(row=0, column=1, sticky=tk.EW)
-
-    ttk.Label(main_frame, text=_("proxy_address")).grid(row=1, column=0, sticky=tk.W, pady=4)
-    ttk.Entry(main_frame, textvariable=proxy_var, width=40).grid(row=1, column=1, sticky=tk.EW)
-
-    ttk.Label(main_frame, text=_("api_key")).grid(row=2, column=0, sticky=tk.W, pady=4)
-    ttk.Entry(main_frame, textvariable=api_key_var, width=40, show="*").grid(row=2, column=1, sticky=tk.EW)
-
-    ttk.Label(main_frame, text=_("language")).grid(row=3, column=0, sticky=tk.W, pady=4)
-    lang_combo = ttk.Combobox(main_frame, textvariable=lang_var, values=["zh", "en"], state="readonly")
-    lang_combo.grid(row=3, column=1, sticky=tk.EW)
-
-    ttk.Checkbutton(main_frame, text=_("generate_wordcloud"), variable=wordcloud_var).grid(row=4, column=0,
-                                                                                           columnspan=2, sticky=tk.W,
-                                                                                           pady=8)
-
-    button_frame = ttk.Frame(main_frame)
-    button_frame.grid(row=5, column=0, columnspan=2, pady=(20, 0), sticky=tk.E)
-
-    def save_and_close():
-        new_config = {
-            "tdl_path": tdl_path_var.get(),
-            "proxy": proxy_var.get(),
-            "api": api_key_var.get(),
-            "language": lang_var.get(),
-            "generate_wordcloud": wordcloud_var.get()
-        }
-        save_config(new_config)
-        messagebox.showinfo(_("success"), _("settings_saved"), parent=settings_win)
-        settings_win.destroy()
-
-    ttk.Button(button_frame, text=_("save"), command=save_and_close, style="Accent.TButton").pack(side=tk.RIGHT)
-    ttk.Button(button_frame, text=_("cancel"), command=settings_win.destroy).pack(side=tk.RIGHT, padx=10)
 
 
 class App(tk.Tk):
@@ -191,8 +104,15 @@ class App(tk.Tk):
         self.chat_target_entry.pack(anchor=tk.W, pady=(5, 0))
         on_custom_target_toggle()
 
+        default_font = tkfont.nametofont("TkDefaultFont")
+        bold_font = default_font.copy()
+        bold_font.configure(weight="bold")
+
+        style = ttk.Style()
+        style.configure("Bold.TButton", font=bold_font)
+
         summary_button = ttk.Button(left_frame, text=_("start_summary"), command=self.start_summary_thread,
-                                    style="Accent.TButton")
+                                    style="Bold.TButton")
         summary_button.pack(fill=tk.X, pady=20)
         style = ttk.Style()
         style.configure("Accent.TButton", font=("Helvetica", 12, "bold"))
@@ -227,8 +147,8 @@ class App(tk.Tk):
 
         results_frame = ttk.LabelFrame(right_frame, text=_("summary_results"), padding=10)
         results_frame.pack(fill=tk.BOTH, expand=True, pady=(5, 0))
-        results_frame.grid_rowconfigure(0, weight=1);
-        results_frame.grid_columnconfigure(0, weight=3);
+        results_frame.grid_rowconfigure(0, weight=1)
+        results_frame.grid_columnconfigure(0, weight=3)
         results_frame.grid_columnconfigure(1, weight=2)
         self.summary_text_widget = scrolledtext.ScrolledText(results_frame, wrap=tk.WORD, state="disabled",
                                                              font=("Helvetica", 10))
@@ -254,6 +174,7 @@ class App(tk.Tk):
                 chat.get('visible_name'),
                 chat.get('username', '-')  # 如果没有 username，则显示 '-'
             ))
+
     def populate_tree_from_cache(self):
         """启动时从缓存文件加载群聊列表"""
         if CHATS_CACHE_FILE.exists():
@@ -305,10 +226,10 @@ class App(tk.Tk):
             n = self.number_var.get()
             if n <= 0: raise ValueError(_("invalid_n"))
 
-            self.summary_text_widget.config(state="normal");
-            self.summary_text_widget.delete('1.0', tk.END);
+            self.summary_text_widget.config(state="normal")
+            self.summary_text_widget.delete('1.0', tk.END)
             self.summary_text_widget.config(state="disabled")
-            self.wordcloud_canvas.config(image=None);
+            self.wordcloud_canvas.config(image=None)
             self.wordcloud_canvas.image = None
             self.update_idletasks()
 
@@ -326,17 +247,17 @@ class App(tk.Tk):
             # 4. 总结
             self.update_progress("status_summarizing", 50)
             summary_text = summarizer.summarize_chat(formatted_messages)
-            self.summary_text_widget.config(state="normal");
-            self.summary_text_widget.insert('1.0', summary_text);
+            self.summary_text_widget.config(state="normal")
+            self.summary_text_widget.insert('1.0', summary_text)
             self.summary_text_widget.config(state="disabled")
 
             # 5. 生成词云 (可选)
             if self.config.get("generate_wordcloud", True):
                 self.update_progress("status_generating_wordcloud", 70)
                 generate_wordcloud(summary_text, "../export/wordcloud.png")
-                img = Image.open("../export/wordcloud.png");
+                img = Image.open("../export/wordcloud.png")
                 img_tk = ImageTk.PhotoImage(img)
-                self.wordcloud_canvas.config(image=img_tk);
+                self.wordcloud_canvas.config(image=img_tk)
                 self.wordcloud_canvas.image = img_tk
 
             # 6. 转发
