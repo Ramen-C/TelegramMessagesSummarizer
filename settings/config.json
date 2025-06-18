@@ -1,0 +1,7 @@
+{
+  "tdl_path": "tdl",
+  "proxy": "http://localhost:7897",
+  "api": "sk-80f4be0c573f49dfb31558c774ccf1f0",
+  "language": "en",
+  "generate_wordcloud": true
+}
