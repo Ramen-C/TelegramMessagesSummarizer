@@ -3,8 +3,6 @@ from tkinter import messagebox
 import json
 
 CONFIG_FILE = Path("../settings/config.json")
-CHATS_CACHE_FILE = Path("../settings/chats.json")
-
 
 def load_config():
     """加载配置文件，如果文件不存在或损坏，则创建并使用默认文件。"""

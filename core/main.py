@@ -4,7 +4,6 @@ import tkinter as tk
 from tkinter import messagebox, ttk, scrolledtext
 from PIL import Image, ImageTk
 import json
-from pathlib import Path
 import tkinter.font as tkfont
 import threading
 import queue
@@ -16,11 +15,11 @@ import exporter
 import summarizer
 import forwarder
 from filter import filter_and_format_messages
+from pathlib import Path
 from visualizer import generate_wordcloud
 from loadhelper import load_config
 from settings_ui import open_settings_window
 
-CONFIG_FILE = Path("../settings/config.json")
 CHATS_CACHE_FILE = Path("../settings/chats.json")
 
 

@@ -1,5 +1,5 @@
 {
-  "tdl_path": "tdl",
+  "tdl_path": "../resources/tdl_window/tdl.exe",
   "proxy": "http://localhost:7897",
   "api": "sk-80f4be0c573f49dfb31558c774ccf1f0",
   "language": "en",

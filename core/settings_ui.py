@@ -1,9 +1,9 @@
 import tkinter as tk
 import tkinter.font as tkfont
-from tkinter import ttk, messagebox, scrolledtext
+from tkinter import ttk, messagebox
 from translations import _
 
-from core.loadhelper import load_config, save_config
+from loadhelper import load_config, save_config
 
 
 def open_settings_window(parent):
