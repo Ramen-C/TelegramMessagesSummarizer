@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48911bdb-521f-46fe-a438-417990c68821" name="更改" comment="更改">
-      <change beforePath="$PROJECT_DIR$/.idea/TelegramHistorySummerizer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TelegramHistorySummerizer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/chat_selector.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/chat_selector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/loadhelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/loadhelper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/settings_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/settings_ui.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/export/summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/export/summary.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/export/wordcloud.png" beforeDir="false" afterPath="$PROJECT_DIR$/export/wordcloud.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings/chats.json" beforeDir="false" afterPath="$PROJECT_DIR$/settings/chats.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/settings/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings/tdl-export.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings/tdl-export.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/settings/tdl-export.settings" beforeDir="false" afterPath="$PROJECT_DIR$/settings/tdl-export.settings" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,31 +63,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.chat_selector.executor": "Run",
-    "Python.config.executor": "Run",
-    "Python.exporter.executor": "Run",
-    "Python.forwarder.executor": "Run",
-    "Python.gui.executor": "Run",
-    "Python.login.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.summarizer.executor": "Run",
-    "Python.visualizer.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/CodeField/TelegramMessagesSummarizer",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.chat_selector.executor&quot;: &quot;Run&quot;,
+    &quot;Python.config.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exporter.executor&quot;: &quot;Run&quot;,
+    &quot;Python.forwarder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.gui.executor&quot;: &quot;Run&quot;,
+    &quot;Python.login.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.summarizer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.visualizer.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/CodeField/TelegramMessagesSummarizer&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\18926\Downloads\semester 6\Khan\TelegramMessagesSummarizer-main\core\dist" />

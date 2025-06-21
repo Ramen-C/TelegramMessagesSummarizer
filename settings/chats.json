@@ -24,21 +24,27 @@
     "username": "xinjingdaily"
   },
   {
+    "id": 6201519547,
+    "type": "private",
+    "visible_name": "Ranchel Wood"
+  },
+  {
     "id": 2021270850,
     "type": "group",
     "visible_name": "リリーホワイト 生産基地",
     "username": "LilywhiteRe"
   },
   {
+    "id": 4900528992,
+    "type": "group",
+    "visible_name": "高级软件实训",
+    "username": "-"
+  },
+  {
     "id": 1780235181,
     "type": "group",
     "visible_name": "Helium Network 氦网 永久公益",
     "username": "helium_network_group"
-  },
-  {
-    "id": 6201519547,
-    "type": "private",
-    "visible_name": "Ranchel Wood"
   },
   {
     "id": 1030924969,
@@ -51,12 +57,6 @@
     "type": "private",
     "visible_name": "拉面",
     "username": "Ramen_C"
-  },
-  {
-    "id": 4900528992,
-    "type": "group",
-    "visible_name": "高级软件实训",
-    "username": "-"
   },
   {
     "id": 5743736356,
